@@ -1,0 +1,13 @@
+g = @(x) 0.5*(log10(x) + 7);
+
+maxErr = 1e-5;
+
+currErr = inf;
+x0 = 3.6;
+while(currErr > maxErr)
+    x_new = g(x0);
+    currErr = abs(x_new - x0);
+    x0 = x_new;
+end
+
+x0
