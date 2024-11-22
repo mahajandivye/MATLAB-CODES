@@ -1,0 +1,21 @@
+format short
+clear all
+clc
+syms x %symbolic variable used for diff function and inline function
+f = @(x) x - exp(-x);
+
+df = diff(f , x);
+dfx = inline(df);
+maxErr = 1e-5;
+
+currErr = inf;
+
+x0 = 1;
+
+while(currErr > maxErr)
+    x_new = x0 - (f(x0)/dfx(x0));
+    currErr = abs(x_new - x0);
+    x0 = x_new;
+end
+
+x0
