@@ -5,13 +5,12 @@ f = @(x) x*log10(x)-1.2;
 
 a=2;
 b=3;
-n=2;
+n=6;
 epsilon = 5*10^(-n-1);
 itermax = log2((b-a)/epsilon);
-err=abs(b-a)
 x0 = 0;
 iter=1;
-while(iter <= itermax && err>=epsilon)
+while(iter <= itermax )
     x0 = (a+b)/2;
     if(f(x0) < 0)
         a = x0;
@@ -19,7 +18,6 @@ while(iter <= itermax && err>=epsilon)
         b = x0;
     end
     n = n + 1;
-    err=abs(f(x0));
 end
 
 x0
